@@ -9,15 +9,15 @@
 #ifndef STD_TYPES_H_
 #define STD_TYPES_H_
 
-typedef   unsigned char	      uint8_t ;
-typedef   signed char	      int8_t ;
-typedef   unsigned short	  u16;
-typedef   signed short		  s16;
-typedef   unsigned long       u32;
-typedef   signed long         s32;
-typedef   unsigned long long  u64;
-typedef   signed long long    s64;
-typedef   float               f32;
-typedef   double              f64;
+typedef   unsigned char	      uint8_t;
+typedef   signed char	      sint8_t;
+typedef   unsigned short	  uint16_t;
+typedef   signed short		  sint16_t;
+typedef   unsigned long       uint32_t;
+typedef   signed long         sint16_t;
+typedef   unsigned long long  uint64_t;
+typedef   signed long long    sint64_t;
+typedef   float               fint32_t;
+typedef   double              fint64_t;
 
 #endif /* STD_TYPES_H_ */
