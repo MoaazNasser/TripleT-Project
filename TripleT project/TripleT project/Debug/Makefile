@@ -37,6 +37,7 @@ SUBDIRS :=  \
 ../HAL \
 ../HAL/LED \
 ../HAL/BUZZ \
+../HAL/LCD \
 ../MCAL \
 ../MCAL/DIO \
 ../MCAL/ADC
@@ -44,6 +45,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../HAL/LCD/LCD.c \
 ../HAL/LED/LED.c \
 ../main.c \
 ../MCAL/DIO/DIO.c
@@ -56,21 +58,25 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+HAL/LCD/LCD.o \
 HAL/LED/LED.o \
 main.o \
 MCAL/DIO/DIO.o
 
 OBJS_AS_ARGS +=  \
+HAL/LCD/LCD.o \
 HAL/LED/LED.o \
 main.o \
 MCAL/DIO/DIO.o
 
 C_DEPS +=  \
+HAL/LCD/LCD.d \
 HAL/LED/LED.d \
 main.d \
 MCAL/DIO/DIO.d
 
 C_DEPS_AS_ARGS +=  \
+HAL/LCD/LCD.d \
 HAL/LED/LED.d \
 main.d \
 MCAL/DIO/DIO.d
@@ -89,24 +95,31 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+HAL/LCD/LCD.o: ../HAL/LCD/LCD.c
+	@echo Building file: $<
+	@echo Invoking: XC8 C Compiler : 2.31
+	$(QUOTE)C:\Program Files\Microchip\xc8\v2.31\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega32A  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\2.0.401\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega32A__ -DDEBUG  -I"../MCAL/DIO" -I".." -I"../HAL/LCD"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 HAL/LED/LED.o: ../HAL/LED/LED.c
 	@echo Building file: $<
 	@echo Invoking: XC8 C Compiler : 2.31
-	$(QUOTE)C:\Program Files\Microchip\xc8\v2.31\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega32A  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\2.0.401\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega32A__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files\Microchip\xc8\v2.31\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega32A  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\2.0.401\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega32A__ -DDEBUG  -I"../MCAL/DIO" -I".." -I"../HAL/LCD"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 ./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: XC8 C Compiler : 2.31
-	$(QUOTE)C:\Program Files\Microchip\xc8\v2.31\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega32A  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\2.0.401\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega32A__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files\Microchip\xc8\v2.31\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega32A  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\2.0.401\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega32A__ -DDEBUG  -I"../MCAL/DIO" -I".." -I"../HAL/LCD"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/DIO/DIO.o: ../MCAL/DIO/DIO.c
 	@echo Building file: $<
 	@echo Invoking: XC8 C Compiler : 2.31
-	$(QUOTE)C:\Program Files\Microchip\xc8\v2.31\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega32A  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\2.0.401\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega32A__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files\Microchip\xc8\v2.31\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATmega32A  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\2.0.401\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATmega32A__ -DDEBUG  -I"../MCAL/DIO" -I".." -I"../HAL/LCD"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 

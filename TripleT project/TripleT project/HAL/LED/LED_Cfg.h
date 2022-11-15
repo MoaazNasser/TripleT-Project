@@ -9,8 +9,7 @@
 #ifndef LED_CFG_H_
 #define LED_CFG_H_
 
-
-
-
+#define LED_PORT DIO_PORTA
+#define LED_PIN  Pin2
 
 #endif /* LED_CFG_H_ */

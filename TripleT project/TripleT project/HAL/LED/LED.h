@@ -9,8 +9,11 @@
 #ifndef INCFILE1_H_
 #define INCFILE1_H_
 
-void LED_INIT(uint8_t LED_NUM);
-void LED_DISP(uint8_t LED_NUM);
+#include "../../MCAL/DIO/DIO.h"
+#include "../../STD_TYPES.h"
+#include "LED_Cfg.h"
 
+void LED_INIT(void);
+void LED_DISP(uint8_t LED_MODE);
 
 #endif /* INCFILE1_H_ */

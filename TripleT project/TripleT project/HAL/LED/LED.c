@@ -1,16 +1,18 @@
 /*
- * LED.c
- *
- * Created: 11/1/2022 10:13:31 PM
- *  Author: Moaaz Nasser
- */ 
+* LED.c
+*
+* Created: 11/1/2022 10:13:31 PM
+*  Author: Moaaz Nasser
+*/
 
-void    LED_INIT(uint8_t LED_NUM)
+#include "LED.h"
+
+void LED_INIT(void)
 {
-	
+	DIO_SetPinDir(LED_PORT, LED_PIN, OUTPUT);
 }
 
-uint8_t LED_DISP(uint8_t LED_NUM)
+void LED_DISP(uint8_t LED_MODE)
 {
-	
+	DIO_SetPinVal(LED_PORT, LED_PIN, LED_MODE);
 }
